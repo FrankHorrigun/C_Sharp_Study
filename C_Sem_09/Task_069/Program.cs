@@ -1,6 +1,4 @@
-﻿// Задайте значения M и N. Напишите программу, которая выведет все натуральные числа в промежутке от M до N.
-
-// Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от 1 до N.
+﻿// Напишите программу, которая на вход принимает два числа A и B, и возводит число А в целую степень B с помощью рекурсии.
 
 int Prompt(string message)
 {
@@ -10,19 +8,20 @@ int Prompt(string message)
 }
 
 
-void Order(int m, int n)
+int PowRecursive(int number, int pow)
 {
 
-    if (n >= m)
+    if (pow == 1)
     {
-        Order(m, n - 1);
-        Console.Write($"{n} ");
+        return number;
     }
-
+    return number * PowRecursive(number, --pow);
 }
 
 
-int M = Prompt("Input number M");
-int N = Prompt("Input number N");
+int A = Prompt("Input number A");
+int B = Prompt("Input number B");
 
-Order(M, N);
+int powResult = PowRecursive(A, B);
+
+Console.WriteLine($"{A} в степени {B} равно {powResult}");

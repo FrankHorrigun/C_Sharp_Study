@@ -2,22 +2,30 @@
 
 int Prompt(string message)
 {
-    Console.WriteLine(message);
-    int value = int.Parse(Console.ReadLine());
+    Console.Write(message);
+    int value;
+    while (!int.TryParse(Console.ReadLine(), out value) ^ value < 0)
+    {
+        Console.WriteLine("Incorrect Input " + message);
+    }
     return value;
 }
 
-int SumOfNumbers(int input)
+
+
+
+int SumOfNumbers(int input, int count)
 {
-    if (input % 10 != 0)
+
+    if (input % 10 == 0)
     {
-        sum += input % 10;
-        SumOfNumbers(input / 10);
+        return input;
     }
-    return sum;
+    Console.WriteLine($"count = {count}");
+    return input % 10 + SumOfNumbers(input / 10, ++count); ;
 }
 
-int N = Prompt("Input number");
-int sum = 0;
-Console.WriteLine($"{SumOfNumbers(N, sum)}");
+int N = Prompt("Input number: ");
+int count = 1;
+Console.WriteLine($"{SumOfNumbers(N, count)}");
 
