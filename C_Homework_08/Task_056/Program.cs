@@ -57,12 +57,12 @@ void PrintArray2(int[] array)
         int indexMin = 0;
         for (int i = 1; i < array.GetLength(0); i++)
         {
-            if (array[i] < array[i - 1])
+            if (array[i] < array[indexMin])
             {
                 indexMin = i;
             }
         }
-        Console.WriteLine($"Номер строки с наименьшей суммой элементов: {indexMin}");
+        Console.WriteLine($"Номер строки с наименьшей суммой элементов: {indexMin+1} строка");
     }
 
     int[,] randomMatrix = CreateRandomMatrix();
